@@ -412,10 +412,10 @@ defmodule Nebulex.Adapters.Multilevel do
   end
 
   defp replicate(cache, %Object{expire_at: expire_at} = object) do
-    object =
-      if expire_at,
-        do: %{object | expire_at: expire_at - DateTime.to_unix(DateTime.utc_now())},
-        else: object
+    # object =
+    #   if expire_at,
+    #     do: %{object | expire_at: expire_at - DateTime.to_unix(DateTime.utc_now())},
+    #     else: object
 
     true = cache.__adapter__.set(cache, object, [])
     object
